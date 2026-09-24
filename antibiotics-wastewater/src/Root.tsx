@@ -20,13 +20,13 @@ export const RemotionRoot: React.FC = () => {
         height={1080}
       />
       <Folder name="Scenes">
-        <Composition id="Scene1-Title" component={Scene1Title} durationInFrames={180} fps={30} width={1920} height={1080} />
-        <Composition id="Scene2-Hospital" component={Scene2Hospital} durationInFrames={270} fps={30} width={1920} height={1080} />
-        <Composition id="Scene3-Treatment" component={Scene3Treatment} durationInFrames={300} fps={30} width={1920} height={1080} />
+        <Composition id="Scene1-Title" component={Scene1Title} durationInFrames={165} fps={30} width={1920} height={1080} />
+        <Composition id="Scene2-Hospital" component={Scene2Hospital} durationInFrames={255} fps={30} width={1920} height={1080} />
+        <Composition id="Scene3-Treatment" component={Scene3Treatment} durationInFrames={285} fps={30} width={1920} height={1080} />
         <Composition id="Scene4-Resistance" component={Scene4Resistance} durationInFrames={300} fps={30} width={1920} height={1080} />
-        <Composition id="Scene5-Biochar" component={Scene5Biochar} durationInFrames={270} fps={30} width={1920} height={1080} />
-        <Composition id="Scene6-Photocatalysis" component={Scene6Photocatalysis} durationInFrames={270} fps={30} width={1920} height={1080} />
-        <Composition id="Scene7-Hydrogel" component={Scene7Hydrogel} durationInFrames={300} fps={30} width={1920} height={1080} />
+        <Composition id="Scene5-Biochar" component={Scene5Biochar} durationInFrames={300} fps={30} width={1920} height={1080} />
+        <Composition id="Scene6-Photocatalysis" component={Scene6Photocatalysis} durationInFrames={295} fps={30} width={1920} height={1080} />
+        <Composition id="Scene7-Hydrogel" component={Scene7Hydrogel} durationInFrames={290} fps={30} width={1920} height={1080} />
       </Folder>
     </>
   );

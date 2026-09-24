@@ -4,15 +4,23 @@ A 60-second educational explainer (1920×1080, 30 fps) built with [Remotion](htt
 
 | # | Scene | Length |
 |---|-------|--------|
-| 1 | Title: "Antibiotics in Wastewater" | 6 s |
-| 2 | Hospital wastewater flowing to a treatment plant | 9 s |
-| 3 | Antibiotics passing through conventional treatment | 10 s |
+| 1 | Title: "Antibiotics in Wastewater" | 5.5 s |
+| 2 | Hospital wastewater flowing to a treatment plant | 8.5 s |
+| 3 | Antibiotics passing through conventional treatment | 9.5 s |
 | 4 | Antibiotic resistance with animated bacteria | 10 s |
-| 5 | Biochar as an adsorbent | 9 s |
-| 6 | g-C₃N₄ photocatalysis under visible light | 9 s |
-| 7 | Biochar/g-C₃N₄ hydrogel removing contaminants | 10 s |
+| 5 | Biochar as an adsorbent | 10 s |
+| 6 | g-C₃N₄ photocatalysis under visible light | 9.8 s |
+| 7 | Biochar/g-C₃N₄ hydrogel removing contaminants | 9.7 s |
 
 Scenes are joined by 0.5 s crossfades, so the 63 s of scene time plays as exactly 60 s.
+
+## Voiceover
+
+Each scene has its own narration clip in `public/voiceover/sceneN.mp3`, generated with
+ElevenLabs (voice: Jake Grant, model `eleven_multilingual_v2`). Clips start 0.3 s into
+their scene, and scene lengths are sized so each clip ends before the next begins.
+If you regenerate a clip and it gets longer, lengthen that scene in
+`src/AntibioticsVideo/AntibioticsVideo.tsx` and shorten another to keep 60 s.
 
 ## Structure
 
