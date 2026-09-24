@@ -1,0 +1,44 @@
+{
+  "name": "af447-documentary",
+  "version": "1.0.0",
+  "description": "Air France 447: a Hindi aviation documentary built with Remotion",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "dependencies": {
+    "@fontsource/cormorant-garamond": "^5.3.0",
+    "@fontsource/noto-sans-devanagari": "^5.3.0",
+    "@fontsource/noto-serif-devanagari": "^5.3.0",
+    "@remotion/cli": "4.0.527",
+    "@remotion/fonts": "4.0.527",
+    "@remotion/media": "4.0.527",
+    "@types/d3-geo": "^3.1.1",
+    "@types/node": "^26.6.2",
+    "@types/topojson-client": "^3.1.5",
+    "@types/topojson-specification": "^1.0.5",
+    "d3-geo": "^3.1.1",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "remotion": "4.0.527",
+    "topojson-client": "^3.1.0",
+    "world-atlas": "^2.0.2"
+  },
+  "devDependencies": {
+    "@remotion/eslint-config-flat": "4.0.527",
+    "@types/react": "19.2.7",
+    "@types/web": "0.0.166",
+    "eslint": "9.19.0",
+    "prettier": "3.8.1",
+    "typescript": "5.9.3"
+  },
+  "scripts": {
+    "dev": "remotion studio",
+    "build": "remotion bundle",
+    "render": "remotion render AF447Documentary out/af447-hindi.mp4",
+    "export:cues": "node --experimental-strip-types --no-warnings scripts/export-cues.ts",
+    "sync:audio": "node --experimental-strip-types --no-warnings scripts/sync-audio.ts",
+    "voiceover": "python3 scripts/synthesize-voiceover.py recordings/kokoro && python3 scripts/prepare-voiceover.py recordings/kokoro && npm run sync:audio",
+    "score": "npm run export:cues && python3 scripts/synthesize-score.py && npm run sync:audio",
+    "lint": "eslint src scripts && tsc"
+  }
+}
