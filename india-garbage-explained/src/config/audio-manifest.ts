@@ -13,7 +13,264 @@ export type AudioManifest = {
 };
 
 export const AUDIO_MANIFEST: AudioManifest = {
-  "lines": {},
+  "lines": {
+    "hook/bigger": {
+      "src": "audio/voiceover/hook/bigger.mp3",
+      "seconds": 3.84
+    },
+    "hook/forget": {
+      "src": "audio/voiceover/hook/forget.mp3",
+      "seconds": 2.456
+    },
+    "hook/scale": {
+      "src": "audio/voiceover/hook/scale.mp3",
+      "seconds": 3.579
+    },
+    "hook/throw": {
+      "src": "audio/voiceover/hook/throw.mp3",
+      "seconds": 1.75
+    },
+    "hook/truck": {
+      "src": "audio/voiceover/hook/truck.mp3",
+      "seconds": 3.004
+    },
+    "hook/where": {
+      "src": "audio/voiceover/hook/where.mp3",
+      "seconds": 1.358
+    },
+    "whatIsGarbage/behave": {
+      "src": "audio/voiceover/whatIsGarbage/behave.mp3",
+      "seconds": 3.5
+    },
+    "whatIsGarbage/care": {
+      "src": "audio/voiceover/whatIsGarbage/care.mp3",
+      "seconds": 4.598
+    },
+    "whatIsGarbage/items": {
+      "src": "audio/voiceover/whatIsGarbage/items.mp3",
+      "seconds": 7.576
+    },
+    "whatIsGarbage/notOne": {
+      "src": "audio/voiceover/whatIsGarbage/notOne.mp3",
+      "seconds": 5.094
+    },
+    "whatIsGarbage/streams": {
+      "src": "audio/voiceover/whatIsGarbage/streams.mp3",
+      "seconds": 3.422
+    },
+    "segregation/contaminate": {
+      "src": "audio/voiceover/segregation/contaminate.mp3",
+      "seconds": 5.59
+    },
+    "segregation/dry": {
+      "src": "audio/voiceover/segregation/dry.mp3",
+      "seconds": 3.161
+    },
+    "segregation/fourStreams": {
+      "src": "audio/voiceover/segregation/fourStreams.mp3",
+      "seconds": 2.664
+    },
+    "segregation/handover": {
+      "src": "audio/voiceover/segregation/handover.mp3",
+      "seconds": 3.814
+    },
+    "segregation/hardRecover": {
+      "src": "audio/voiceover/segregation/hardRecover.mp3",
+      "seconds": 3.971
+    },
+    "segregation/hazardous": {
+      "src": "audio/voiceover/segregation/hazardous.mp3",
+      "seconds": 2.847
+    },
+    "segregation/mixed": {
+      "src": "audio/voiceover/segregation/mixed.mp3",
+      "seconds": 3.109
+    },
+    "segregation/oneBin": {
+      "src": "audio/voiceover/segregation/oneBin.mp3",
+      "seconds": 2.638
+    },
+    "segregation/rule2016": {
+      "src": "audio/voiceover/segregation/rule2016.mp3",
+      "seconds": 7.21
+    },
+    "segregation/rule2026": {
+      "src": "audio/voiceover/segregation/rule2026.mp3",
+      "seconds": 6.165
+    },
+    "segregation/separate": {
+      "src": "audio/voiceover/segregation/separate.mp3",
+      "seconds": 2.586
+    },
+    "segregation/wet": {
+      "src": "audio/voiceover/segregation/wet.mp3",
+      "seconds": 2.978
+    },
+    "truck/gap": {
+      "src": "audio/voiceover/truck/gap.mp3",
+      "seconds": 7.288
+    },
+    "truck/moves": {
+      "src": "audio/voiceover/truck/moves.mp3",
+      "seconds": 3.474
+    },
+    "truck/notDisappear": {
+      "src": "audio/voiceover/truck/notDisappear.mp3",
+      "seconds": 2.116
+    },
+    "truck/question": {
+      "src": "audio/voiceover/truck/question.mp3",
+      "seconds": 2.691
+    },
+    "truck/recover": {
+      "src": "audio/voiceover/truck/recover.mp3",
+      "seconds": 6.531
+    },
+    "truck/residual": {
+      "src": "audio/voiceover/truck/residual.mp3",
+      "seconds": 4.336
+    },
+    "truck/route": {
+      "src": "audio/voiceover/truck/route.mp3",
+      "seconds": 5.198
+    },
+    "truck/shares": {
+      "src": "audio/voiceover/truck/shares.mp3",
+      "seconds": 7.105
+    },
+    "landfills/gas": {
+      "src": "audio/voiceover/landfills/gas.mp3",
+      "seconds": 6.426
+    },
+    "landfills/intro": {
+      "src": "audio/voiceover/landfills/intro.mp3",
+      "seconds": 7.784
+    },
+    "landfills/leachate": {
+      "src": "audio/voiceover/landfills/leachate.mp3",
+      "seconds": 2.638
+    },
+    "landfills/liner": {
+      "src": "audio/voiceover/landfills/liner.mp3",
+      "seconds": 7.758
+    },
+    "landfills/methane": {
+      "src": "audio/voiceover/landfills/methane.mp3",
+      "seconds": 3.709
+    },
+    "landfills/organic": {
+      "src": "audio/voiceover/landfills/organic.mp3",
+      "seconds": 6.766
+    },
+    "landfills/rain": {
+      "src": "audio/voiceover/landfills/rain.mp3",
+      "seconds": 5.094
+    },
+    "landfills/rule": {
+      "src": "audio/voiceover/landfills/rule.mp3",
+      "seconds": 9.953
+    },
+    "people/hands": {
+      "src": "audio/voiceover/people/hands.mp3",
+      "seconds": 3.474
+    },
+    "people/integrate": {
+      "src": "audio/voiceover/people/integrate.mp3",
+      "seconds": 7.001
+    },
+    "people/pickers": {
+      "src": "audio/voiceover/people/pickers.mp3",
+      "seconds": 5.642
+    },
+    "people/products": {
+      "src": "audio/voiceover/people/products.mp3",
+      "seconds": 3.161
+    },
+    "people/recognised": {
+      "src": "audio/voiceover/people/recognised.mp3",
+      "seconds": 11.154
+    },
+    "people/sold": {
+      "src": "audio/voiceover/people/sold.mp3",
+      "seconds": 6.348
+    },
+    "plasticEwaste/bottle": {
+      "src": "audio/voiceover/plasticEwaste/bottle.mp3",
+      "seconds": 7.784
+    },
+    "plasticEwaste/frameworks": {
+      "src": "audio/voiceover/plasticEwaste/frameworks.mp3",
+      "seconds": 9.247
+    },
+    "plasticEwaste/notSame": {
+      "src": "audio/voiceover/plasticEwaste/notSame.mp3",
+      "seconds": 2.194
+    },
+    "plasticEwaste/own": {
+      "src": "audio/voiceover/plasticEwaste/own.mp3",
+      "seconds": 3.84
+    },
+    "plasticEwaste/phone": {
+      "src": "audio/voiceover/plasticEwaste/phone.mp3",
+      "seconds": 8.072
+    },
+    "hierarchy/better": {
+      "src": "audio/voiceover/hierarchy/better.mp3",
+      "seconds": 2.9
+    },
+    "hierarchy/dispose": {
+      "src": "audio/voiceover/hierarchy/dispose.mp3",
+      "seconds": 3.553
+    },
+    "hierarchy/hierarchy": {
+      "src": "audio/voiceover/hierarchy/hierarchy.mp3",
+      "seconds": 4.493
+    },
+    "hierarchy/preferred": {
+      "src": "audio/voiceover/hierarchy/preferred.mp3",
+      "seconds": 2.717
+    },
+    "hierarchy/prevent": {
+      "src": "audio/voiceover/hierarchy/prevent.mp3",
+      "seconds": 3.187
+    },
+    "hierarchy/recycle": {
+      "src": "audio/voiceover/hierarchy/recycle.mp3",
+      "seconds": 5.747
+    },
+    "hierarchy/reduce": {
+      "src": "audio/voiceover/hierarchy/reduce.mp3",
+      "seconds": 3.318
+    },
+    "journey/back": {
+      "src": "audio/voiceover/journey/back.mp3",
+      "seconds": 1.802
+    },
+    "journey/disappear": {
+      "src": "audio/voiceover/journey/disappear.mp3",
+      "seconds": 2.273
+    },
+    "journey/letGo": {
+      "src": "audio/voiceover/journey/letGo.mp3",
+      "seconds": 3.213
+    },
+    "journey/measure": {
+      "src": "audio/voiceover/journey/measure.mp3",
+      "seconds": 5.616
+    },
+    "journey/processed": {
+      "src": "audio/voiceover/journey/processed.mp3",
+      "seconds": 4.284
+    },
+    "journey/sight": {
+      "src": "audio/voiceover/journey/sight.mp3",
+      "seconds": 1.176
+    },
+    "journey/works": {
+      "src": "audio/voiceover/journey/works.mp3",
+      "seconds": 6.139
+    }
+  },
   "scenes": {},
   "music": {}
 };

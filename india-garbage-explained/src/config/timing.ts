@@ -14,7 +14,7 @@ import { VIDEO } from "./video.ts";
 //   3. an estimate from its word count
 
 export const WORDS_PER_SECOND = 2.5;
-export const CUE_GAP_SECONDS = 0.35;
+export const CUE_GAP_SECONDS = 0.25;
 const MIN_CUE_SECONDS = 1.4;
 // Figures such as "2021–22" or "92%" take longer to say than one word.
 const WORDS_PER_NUMBER = 2.5;

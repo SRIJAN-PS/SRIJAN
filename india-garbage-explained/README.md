@@ -1,6 +1,6 @@
 # Where does India's garbage actually go?
 
-A 5 min 50 s documentary-style explainer on India's municipal solid-waste system, built with [Remotion](https://www.remotion.dev). 1920×1080, 30 fps. All artwork is original vector graphics; there is no stock footage.
+A 5 min 54 s documentary-style explainer on India's municipal solid-waste system, built with [Remotion](https://www.remotion.dev). 1920×1080, 30 fps. All artwork is original vector graphics; there is no stock footage.
 
 | # | Scene | What it shows |
 |---|-------|---------------|
@@ -84,6 +84,12 @@ If Remotion can't download its headless Chrome, add `--browser-executable=/path/
 - **Timing.** Line lengths are estimated at 2.5 words per second (`timing.ts`). Use `pauseBefore` to add silence, and `leadIn`/`tail` on a scene to hold the picture.
 - **Numbers.** Edit `stats.ts` only. Never type a figure straight into a scene.
 - **Look.** Colours and fonts are in `theme.ts`; the safe areas are in `video.ts`.
+
+## Narration in this version
+
+All 64 narration lines are recorded (`public/audio/voiceover/<scene>/<line>.mp3`). They were generated with ElevenLabs text-to-speech: voice "Prakash – Clear Audiobook Narrator" (Indian English), model `eleven_multilingual_v2`. Figures and years were written out in words for pronunciation ("twenty twenty-one to twenty-two", "ninety-two percent"); the subtitles keep the numerals.
+
+Each clip was trimmed to its speech (0.06 s lead-in, 0.12 s tail) and sped up by 8% without changing pitch (`atempo=1.08`), keeping the film within six minutes (5:54). Lines follow each other with a 0.25 s gap (`CUE_GAP_SECONDS` in `timing.ts`). The music slots are still empty.
 
 ## Voice-over and music slots
 
