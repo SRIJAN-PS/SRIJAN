@@ -1,0 +1,99 @@
+# Where does India's garbage actually go?
+
+A 5 min 50 s documentary-style explainer on India's municipal solid-waste system, built with [Remotion](https://www.remotion.dev). 1920×1080, 30 fps. All artwork is original vector graphics; there is no stock footage.
+
+| # | Scene | What it shows |
+|---|-------|---------------|
+| 1 | The hook | Bottle into a bin, truck takes it away, then "???"; national scale; title |
+| 2 | What is garbage? | A transparent bag separated into seven material types |
+| 3 | The segregation problem | Mixed path vs. segregated path; SWM Rules 2016 (3 streams), then 2026 (4 streams) |
+| 4 | Where the truck takes it | House → collection → transport → processing → recovery → residual → disposal; CPCB collection vs. treatment shares |
+| 5 | Landfills and dumpsites | Cross-section: rain → leachate, organic waste → methane + CO₂; 2026 landfill restriction |
+| 6 | The people behind recycling | Household → waste picker → recycler → new product; recognition in the SWM Rules |
+| 7 | Plastic and e-waste | Split-screen pathways; separate rules for specific waste streams |
+| 8 | Better waste management | Waste hierarchy, prevent → dispose |
+| 9 | The complete journey | The bottle's full path; closing lines; end card |
+
+## Editorial approach
+
+- **Every line is labelled.** The badge in the top-right corner says whether the line on screen is a **FACT · SOURCED**, an **EXPLANATION** (general how-it-works) or a **POSSIBLE SOLUTION**. The badge comes from each cue's `kind` in `src/config/narration.ts`.
+- **Every fact shows its source.** A cue with `kind: "fact"` lists `sources`, and the source label (publisher, document and year) appears beneath it automatically. Statistic cards also show the data year.
+- **Regulatory claims use CPCB/MoEFCC documents only**, listed in `src/config/sources.ts`.
+- **No invented numbers.** The only figures on screen are in `src/config/stats.ts`. Setting `show: false` on a statistic swaps it for a conceptual animation with no number.
+
+### Facts used, and what to check before publishing
+
+| Claim | Source | Status |
+|---|---|---|
+| About 1.7 lakh tonnes/day of MSW generated; about 92% collected; about 54% treated or processed (2021–22) | CPCB, Annual Report on Solid Waste Management 2021–22 | Figures agree across two official-source summaries (the CPCB report, and MoEFCC's 2024 Rajya Sabha reply). This build environment could not open cpcb.nic.in. **Check them against the [CPCB PDF](https://cpcb.nic.in/uploads/MSW/MSW_AnnualReport_2021-22.pdf) and set `checkedAgainstSource: true`.** |
+| SWM Rules 2016: generators to segregate waste and hand it to authorised waste pickers or collectors; definition of "waste picker" | SWM Rules, 2016 (MoEFCC; hosted by CPCB) | Described in the past tense, because these Rules were **superseded on 1 April 2026** |
+| SWM Rules 2026: four streams (wet, dry, sanitary, special care); landfill restricted to non-recyclable, non-energy-recoverable and inert waste; integration of waste pickers and kabadiwalas | SWM Rules, 2026 (MoEFCC), [PIB release](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2219676) | In force from 1 April 2026 |
+| Separate rules for plastic, e-waste, batteries, biomedical, and C&D waste | MoEFCC: Plastic WM Rules 2016; E-Waste (M) Rules 2022; Battery WM Rules 2022; Bio-Medical WM Rules 2016; Environment (C&D) WM Rules 2025 | C&D Rules 2025 in force from 1 April 2026 |
+
+Leachate, landfill gas and the waste hierarchy are presented as general explanations, not as statistics.
+
+The India map shows only city locations as points of light. It draws **no national boundary**, so it makes no claim about borders. To add an outline, use an official Survey of India-compliant file (see `ASSETS.images.indiaOutline`).
+
+## Project structure
+
+```
+src/
+  config/            ← edit these to change the video
+    narration.ts     every narration line: text, claim type, sources, optional recorded length
+    timing.ts        derives scene lengths, cue positions and subtitles from narration.ts
+    sources.ts       source registry (publisher, title, year, URL)
+    stats.ts         every on-screen number, with source, year and a verification flag
+    assets.ts        placeholders: voice-over files, music, background image, map outline
+    video.ts         title, size, fps, subtitle and timing-marker toggles, safe areas
+    theme.ts         colours, fonts, easing
+  components/        reusable building blocks
+    SceneShell.tsx   backdrop, camera, header, claim badge, source label, dark-to-light transition
+    Flow.tsx         FlowNode + self-drawing Arrow for diagrams
+    Cards.tsx        StatCard, StatBar, InfoCard, MediaSlot (image/video placeholder)
+    Labels.tsx       ClaimBadge, SourceLabel
+    Subtitles.tsx    burned-in subtitles + named voice-over marker sequences
+    AudioTracks.tsx  background music (ducked under narration) + per-scene voice-over
+    TimingMarkers.tsx  debug overlay for aligning a recorded voice-over
+    Camera.tsx, Transitions.tsx
+  illustrations/     vector street scene, person, bins, truck, bottle, city-lights map
+  scenes/            one file per scene (Scene01Hook … Scene09Journey)
+  WasteDocumentary.tsx  full composition + standalone scene wrapper
+scripts/export-cues.ts  writes SRT subtitles and a timed voice-over script
+```
+
+In Remotion Studio, `IndiaGarbageExplained` is the full film. The **Scenes** folder has each scene as its own composition, so any scene can be previewed or rendered on its own.
+
+## Commands
+
+```console
+npm i
+npm run dev            # Remotion Studio
+npm run render         # out/india-garbage-explained.mp4
+npm run export:cues    # out/subtitles.srt, out/voiceover-script.md, out/cues.json
+npm run lint           # eslint + typecheck
+```
+
+If Remotion can't download its headless Chrome, add `--browser-executable=/path/to/chrome` to the render command.
+
+## Editing
+
+- **Text.** Change a line in `narration.ts`. The subtitle, the scene length and the animations tied to that line all move with it.
+- **Timing.** Line lengths are estimated at 2.5 words per second (`timing.ts`). Use `pauseBefore` to add silence, and `leadIn`/`tail` on a scene to hold the picture.
+- **Numbers.** Edit `stats.ts` only. Never type a figure straight into a scene.
+- **Look.** Colours and fonts are in `theme.ts`; the safe areas are in `video.ts`.
+
+## Voice-over workflow
+
+1. Run `npm run export:cues` and give `out/voiceover-script.md` to the narrator. Each line has a marker (`VO 3.9 rule2016`), timecodes, a claim type and sources.
+2. Record one file per scene and put it in `public/audio/voiceover/` (e.g. `hook.mp3`).
+3. Point `ASSETS.voiceover.<scene>` at the file in `assets.ts`.
+4. Set `seconds` on each cue in `narration.ts` to the measured length of that line. The scene, subtitles and animations re-time themselves.
+5. To check sync, turn on `VIDEO.showTimingMarkers`. It overlays the current cue id, the timecode and a cue timeline. The Studio timeline also shows every line as a named `VO …` sequence.
+
+## Background music
+
+Put a licensed or royalty-free track in `public/audio/` and set `ASSETS.music.src` (e.g. `"audio/music.mp3"`). It loops, fades in and out, and drops to `duckedVolume` whenever narration is playing.
+
+## Fonts
+
+Inter and IBM Plex Mono (SIL Open Font License) are bundled in `public/fonts/`, so rendering needs no network access.
