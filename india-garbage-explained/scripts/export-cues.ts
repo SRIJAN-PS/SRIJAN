@@ -26,16 +26,16 @@ const md = [
   `# ${VIDEO.title} — voice-over script`,
   "",
   `Total length: ${timecode(TOTAL_FRAMES)} (${(TOTAL_FRAMES / fps).toFixed(1)} s at ${fps} fps).`,
-  `Line lengths are estimated at ${WORDS_PER_SECOND} words per second until real recordings are timed in src/config/narration.ts.`,
+  `Record one file per line and save it under public/audio/voiceover/ using the path in the File column, then run \`npm run sync:audio\`. Lines without a recording are estimated at ${WORDS_PER_SECOND} words per second.`,
   "",
   ...SCENES.flatMap((s) => [
     `## ${s.number}. ${s.title}  ·  starts ${timecode(s.from)}  ·  ${(s.durationInFrames / fps).toFixed(1)} s`,
     "",
-    "| Marker | In | Out | Type | Line | Source |",
-    "|---|---|---|---|---|---|",
+    "| Marker | File | In | Out | Type | Line | Source |",
+    "|---|---|---|---|---|---|---|",
     ...s.cues.map(
       (c, i) =>
-        `| VO ${s.number}.${i + 1} \`${c.id}\` | ${timecode(c.globalFrom)} | ${timecode(c.globalFrom + c.duration)} | ${c.kind} | ${c.text.replace(/\|/g, "\\|")} | ${(c.sources ?? []).map(sourceLabel).join("; ")} |`,
+        `| VO ${s.number}.${i + 1} | \`voiceover/${s.id}/${c.id}.mp3\` | ${timecode(c.globalFrom)} | ${timecode(c.globalFrom + c.duration)} | ${c.kind} | ${c.text.replace(/\|/g, "\\|")} | ${(c.sources ?? []).map(sourceLabel).join("; ")} |`,
     ),
     "",
   ]),

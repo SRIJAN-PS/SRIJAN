@@ -27,6 +27,7 @@
     "build": "remotion bundle",
     "render": "remotion render IndiaGarbageExplained out/india-garbage-explained.mp4",
     "export:cues": "node --experimental-strip-types scripts/export-cues.ts",
-    "lint": "eslint src scripts && tsc"
+    "lint": "eslint src scripts && tsc",
+    "sync:audio": "node --experimental-strip-types scripts/sync-audio.ts"
   }
 }

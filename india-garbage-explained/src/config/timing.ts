@@ -1,3 +1,4 @@
+import { AUDIO_MANIFEST } from "./audio-manifest.ts";
 import { SCRIPT, type Cue, type SceneId } from "./narration.ts";
 import { VIDEO } from "./video.ts";
 
@@ -6,8 +7,11 @@ import { VIDEO } from "./video.ts";
 //
 //   scene = leadIn + (cue + gap + cue + …) + tail
 //
-// A cue's length is estimated from its word count until a recorded line is
-// available; then set `seconds` on the cue to the measured length.
+// A cue's length comes from, in order of preference:
+//   1. `seconds` set on the cue in narration.ts
+//   2. the measured length of its recorded line (public/audio/voiceover/<scene>/<cue>.*,
+//      registered by `npm run sync:audio`)
+//   3. an estimate from its word count
 
 export const WORDS_PER_SECOND = 2.5;
 export const CUE_GAP_SECONDS = 0.35;
@@ -51,7 +55,8 @@ const buildTimeline = () => {
         cursor += toFrames(CUE_GAP_SECONDS);
       }
       cursor += toFrames(cue.pauseBefore ?? 0);
-      const duration = toFrames(cue.seconds ?? estimateSeconds(cue.text));
+      const recorded = AUDIO_MANIFEST.lines[`${scene.id}/${cue.id}`]?.seconds;
+      const duration = toFrames(cue.seconds ?? recorded ?? estimateSeconds(cue.text));
       const timing = { ...cue, sceneId: scene.id, index, from: cursor, duration, globalFrom: sceneStart + cursor };
       cursor += duration;
       return timing;

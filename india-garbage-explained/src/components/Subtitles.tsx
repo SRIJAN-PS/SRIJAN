@@ -42,9 +42,8 @@ const SubtitleLine: React.FC<{ text: string; duration: number }> = ({ text, dura
   );
 };
 
-// One named <Sequence> per narration line. In Remotion Studio these appear
-// on the timeline as voice-over markers ("VO 3.9 · rule2016"); in the render
-// they carry the burned-in subtitle.
+// One named <Sequence> per narration line ("Sub 3.9 · rule2016"), carrying
+// the burned-in subtitle. The matching voice-over slots live in AudioTracks.
 export const Subtitles: React.FC<{ scenes: SceneTiming[]; relative?: boolean }> = ({ scenes, relative }) => {
   return (
     <>
@@ -57,7 +56,7 @@ export const Subtitles: React.FC<{ scenes: SceneTiming[]; relative?: boolean }> 
           return (
             <Sequence
               key={`${scene.id}-${cue.id}`}
-              name={`VO ${scene.number}.${i + 1} · ${cue.id}`}
+              name={`Sub ${scene.number}.${i + 1} · ${cue.id}`}
               from={relative ? cue.from : cue.globalFrom}
               durationInFrames={duration}
               layout="none"
