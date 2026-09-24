@@ -118,6 +118,20 @@ def tidy(seg):
         out[-1 - i] = int(out[-1 - i] * i / n)
     return out
 
+TARGET_RMS_DB = -18.0  # speech loudness of every clip
+PEAK_DB = -1.0
+
+
+def level(seg):
+    """Scale a clip so its speech sits at TARGET_RMS_DB, never peaking above PEAK_DB."""
+    x = [v / 32768 for v in seg]
+    loud = [v for v in x if abs(v) > 0.01] or x
+    rms = (sum(v * v for v in loud) / len(loud)) ** 0.5
+    peak = max(abs(v) for v in x) or 1
+    gain = min(10 ** (TARGET_RMS_DB / 20) / max(rms, 1e-6), 10 ** (PEAK_DB / 20) / peak)
+    return array.array("h", [max(-32767, min(32767, int(v * gain * 32768))) for v in x])
+
+
 def write(seg, dest):
     os.makedirs(os.path.dirname(dest), exist_ok=True)
     tmp = dest + ".wav"
@@ -160,7 +174,7 @@ def main(raw):
             if c["id"] not in done:
                 print(f"  MISSING {scene['id']}/{c['id']}")
                 continue
-            secs = write(tidy(done[c["id"]]), os.path.join(out_root, scene["id"], c["id"] + ".mp3"))
+            secs = write(level(tidy(done[c["id"]])), os.path.join(out_root, scene["id"], c["id"] + ".mp3"))
             total += secs
             rate = len(c["say"]) / secs
             flag = "  <-- check" if rate < 9 or rate > 19 else ""

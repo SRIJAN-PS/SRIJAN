@@ -120,7 +120,7 @@ Each music cue is composed to the exact length of its section, read from `out/ti
 | Verdict | 8 | Almost silent |
 | Ending | 9–11 | Resolves to D major on the end card |
 
-Music drops to 40% under narration. There are 12 sound effects:
+Music drops to 30% under narration. Narration clips are normalised to −18 dBFS, so the voice sits about 14 dB above the music and effects. There are 12 sound effects:
 
 | Sound | Sound |
 |---|---|
